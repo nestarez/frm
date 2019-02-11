@@ -19,15 +19,17 @@
                         </div>
                         <div class="row">
                             <div class="col-md-2 form-group">
-                                <select class="form-control">
-                                    <option>Prueba de Usuario 1</option>
-                                    <option>2</option>
-                                    <option>3</option>
+                                <select class="form-control" id="listUsuarios">
+                                <?php 
+                                    foreach($usuarios as $usuario){
+                                        echo "<option value=" . $usuario["ID_Usuario"] . ">" . $usuario["Usuario"] . "</option>";
+                                    }
+                                ?>
                                 </select>
                             </div>
                             <div class="col-md-4"></div>
                             <div class="col-md-2">
-                                <button type="button" class="btn btn-outline-primary col-md-8">Nuevo</button>
+                                <button id="newBtn" type="button" class="btn btn-outline-primary col-md-8">Nuevo</button>
                             </div>
                             <div class="col-md-2">
                                 <button type="button" class="btn btn-outline-primary col-md-8">Editar</button>
@@ -133,6 +135,8 @@
         </div>
         <?php
         $this->load->view("templates/resources.php");
+        $this->load->view("templates/loading.php");
         ?>
+        <script type="text/javascript" src="./utilitarios/js/usuarioJS.js"></script>
     </body>
 </html>
