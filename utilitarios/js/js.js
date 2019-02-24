@@ -6,7 +6,7 @@ function load(){
   $("#loading-gif").fadeIn();
 }
 
-function unload(){
+function unload( data, textStatus, jqXHR ){
   $("#loading-gif").fadeOut();
 }
 

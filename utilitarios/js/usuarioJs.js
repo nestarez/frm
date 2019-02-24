@@ -7,16 +7,21 @@ $("#listUsuarios").change(function(){
     getUsuario($("#listUsuarios").val());
 });
 
-function getUsuario($idUsuario){
+function getUsuario(idUsuario){
 
-    $.ajax("Usuarios/get",{
+    var param = {
+        'idUsuario' :  idUsuario
+    };
+
+    $.ajax({
+        url:"Usuarios/get",
         beforeSend: load,
-        data: $idUsuario,
+        data: param,
         success: setDataUsuario,
         type: "POST",
-        dataType: "json"
-
-    }).done(unload);
+        dataType: "json",
+        complete: unload
+    });
 }
 function getAllUsuario(){
 
@@ -29,13 +34,15 @@ function getAllUsuario(){
     }).done(unload);
 }
 
-function setDataUsuario(data, status, jqxhr){
-    console.log(data);
+function setDataUsuario(data, status, jqxhr){    
+    $("#usuarioIn").val(data["Usuario"]);
+    $("#nombreIn").val(data["Nombres"]);
+    $("#apellIn").val(data["Apellido_Pat"] + " " + data["Apellido_Mat"]);
+    $("#cargoIn").val(data["Cargo"]);
 }
 function setComboUsuarios(data, status, jqxhr){
     var options = "";
-    console.log(data.data);
-    data.data.forEach(elemento => {
+    data.forEach(elemento => {
         options += `<option value='` + elemento["ID_Usuario"] + `'>` + elemento["Usuario"] + `</option>`;
        
     });

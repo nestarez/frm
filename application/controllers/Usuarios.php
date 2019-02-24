@@ -15,12 +15,16 @@ class Usuarios extends CI_Controller{
 	}
 
 	public function getAll(){
-		$response["data"] = $this->usuBD->getAll();
+		$response = $this->usuBD->getAll();
 		echo json_encode($response);
 	}
 	
-	public function get($id){
-		$response["data"] = $this->usuBD->get($id);
+	public function get(){	
+		$usuario = array(
+			'idUsuario' => $this->input->post('idUsuario'),
+			'nombre' => "Prueba"
+		);
+		$response = $this->usuBD->get($usuario);
 		echo json_encode($response);
 	}
 }

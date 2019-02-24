@@ -2,9 +2,10 @@
 
 class Usuarios_model extends CI_Model{
 
-    public function get($id){
-        $query = $this->db->get("usuario",$id);
-        return $query->result_row();
+    public function get($usuario){
+        $this->db->where('id_usuario',$usuario["idUsuario"]);
+        $query = $this->db->get("usuario");
+        return $query->row_array();
     }
 
     public function getAll(){
