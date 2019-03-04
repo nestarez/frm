@@ -20,9 +20,10 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-8">
-                                <div class="form-group row">
+                                <div class="form-group row ui-widget">
                                     <label for="pacientesFiltro" class="col-form-label col-md-2">Paciente:</label>                        
                                     <input type="text" class="form-control col-md-8" id="pacientesFiltro" />
+                                    <input type="hidden" id="pacienteId"/>
                                 </div>
                             </div>
                             <div class="col-md-3">
@@ -49,11 +50,11 @@
                                 <div class="form-group row">
                                     <label for="empleadoFiltro" class="col-form-label col-md-4">Encargado:</label>
                                     <select class="form-control col-md-8" id="empleadoFiltro">
-                                        <option>Pepe Morales</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <?php 
+                                    foreach($usuarios as $usuario){
+                                        echo "<option value=" . $usuario["ID_Usuario"] . ">" . $usuario["Apellido_Pat"] . " " . $usuario["Nombres"] . "</option>";
+                                    }
+                                ?>
                                     </select>
                                 </div>
                             </div>
@@ -61,11 +62,11 @@
                                 <div class="form-group row">
                                     <label for="estadoFiltro" class="col-form-label col-md-2">Estado:</label>
                                     <select class="form-control col-md-6" id="estadoFiltro">
-                                        <option>Programado</option>
-                                        <option>2</option>
-                                        <option>3</option>
-                                        <option>4</option>
-                                        <option>5</option>
+                                    <?php 
+                                    foreach($estadoVisitas as $estado){
+                                        echo "<option value=" . $estado["id_estado_visita"] . ">" . " " . $estado["descripcion"] . "</option>";
+                                    }
+                                ?>
                                     </select>
                                 </div>
                             </div>
@@ -80,29 +81,54 @@
                                 <table class="table table-sm table-hover table-bordered">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
+                                            <th scope="col" class="col-md-1">Código</th>
+                                            <th scope="col" class="col-md-2">Paciente</th>
+                                            <th scope="col" class="col-md-3">Institución</th>
+                                            <th scope="col" class="col-md-1">Día y hora</th>
+                                            <th scope="col" class="col-md-2">Encargado</th>
+                                            <th scope="col" class="col-md-1">Estado</th>
+                                            <th scope="col" class="col-md-2">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
+                                            <th scope="row">C201901-0001</th>
+                                            <td>Castillo Rojas Juan</td>
+                                            <td>La Tarumba</td>
+                                            <td>12//06/2018</td>
+                                            <td>Huayta Susy</td>
+                                            <td>Programada</td>
+                                            <td class="row">
+                                                <div class="col-md-4"> <i class="fas fa-2x fa-running"></i></div>
+                                                <div class="col-md-4"> <i class="fas fa-2x fa-running"></i></div>
+                                                <div class="col-md-4"> <i class="fas fa-2x fa-running"></i></div>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
+                                        <th scope="row">C201901-0001</th>
+                                            <td>Castillo Rojas Juan</td>
+                                            <td>La Tarumba</td>
+                                            <td>12//06/2018</td>
+                                            <td>Huayta Susy</td>
+                                            <td>Programada</td>
+                                            <td class="row">
+                                                <div class="col-md-4"> <i class="fas fa-2x fa-running"></i></div>
+                                                <div class="col-md-4"> <i class="fas fa-2x fa-running"></i></div>
+                                                <div class="col-md-4"> <i class="fas fa-2x fa-running"></i></div>
+                                            </td>
                                         </tr>
                                         <tr>
-                                            <th scope="row">3</th>
-                                            <td colspan="2">Larry the Bird</td>
-                                            <td>@twitter</td>
+                                        <th scope="row">C201901-0001</th>
+                                            <td>Castillo Rojas Juan</td>
+                                            <td>La Tarumba</td>
+                                            <td>12//06/2018</td>
+                                            <td>Huayta Susy</td>
+                                            <td>Programada</td>
+                                            <td class="row">
+                                                <div class="col-md-4"> <i class="fas fa-2x fa-running"></i></div>
+                                                <div class="col-md-4"> <i class="fas fa-2x fa-running"></i></div>
+                                                <div class="col-md-4"> <i class="fas fa-2x fa-running"></i></div>
+                                            </td>
                                         </tr>
                                     </tbody>
                                 </table>                                                               
@@ -114,6 +140,9 @@
         </div>
         <?php
         $this->load->view("templates/resources.php");
+        $this->load->view("templates/loading.php");
         ?>
+        <script type="text/javascript" src="./utilitarios/js/pacienteJs.js"></script>
+        <script type="text/javascript" src="./utilitarios/js/consultaJs.js"></script>
     </body>
 </html>
