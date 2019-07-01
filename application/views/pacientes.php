@@ -8,7 +8,7 @@
         ?>        
     </head>
     <body>
-    <?php $this->load->view("templates/navbar.php"); ?>
+        <?php $this->load->view("templates/navbar.php"); ?>
         <div class="container-fluid contenedor">
             <div class="row">
                 <?php $this->load->view("templates/sidebar.php"); ?>
@@ -45,7 +45,7 @@
                             </div>
                             <div class="col-md-4">
                                 <div class="form-group row">
-                                    <button type="submit" class="btn btn-outline-success col-md-11">+ Agregar</button>
+                                    <a class="btn btn-outline-success col-md-11" href="/HCElectFisiored/index.php/Pacientes/nuevo" role="button">+ Agregar</a>
                                 </div>
                             </div>                               
                         </div>
@@ -55,30 +55,25 @@
                                 <table class="table table-sm table-hover table-bordered">
                                     <thead class="thead-light">
                                         <tr>
-                                            <th scope="col">#</th>
-                                            <th scope="col">First</th>
-                                            <th scope="col">Last</th>
-                                            <th scope="col">Handle</th>
+                                            <th scope="col">N° Doc.</th>
+                                            <th scope="col">Nombres</th>
+                                            <th scope="col">Teléfono</th>
+                                            <th scope="col">Correo</th>
+                                            <th scope="col">Fecha Nacimiento</th>
+                                            <th scope="col">Acciones</th>
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>@mdo</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>@fat</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td colspan="2">Larry the Bird</td>
-                                            <td>@twitter</td>
-                                        </tr>
+                                        <?php foreach ($pacientes as $paciente) { ?>
+                                            <tr>
+                                                <th><?php echo($paciente["nro_documento"]) ?></th>
+                                                <td><?php echo($paciente["nombres"] ." ". $paciente["ap_paterno"]) ?></td>
+                                                <td><?php echo($paciente["telefono"]) ?></td>
+                                                <td><?php echo($paciente["correo"]) ?></td>
+                                                <td><?php echo($paciente["fecha_nacimiento"]) ?></td>
+                                                <td></td>
+                                            </tr>
+                                        <?php } ?>
                                     </tbody>
                                 </table>                                                               
                             </div>    
