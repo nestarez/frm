@@ -64,7 +64,7 @@
                                 <label class="form-check-label" for="sexoM">Masculino</label>
                             </div>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" id="inlineCheckbox2" value="option2">
+                                <input class="form-check-input" type="checkbox" id="inlineCheckbox1" value="option2">
                                 <label class="form-check-label" for="sexoF">Femenino</label>
                             </div>
                         </div>

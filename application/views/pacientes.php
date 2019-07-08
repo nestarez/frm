@@ -9,6 +9,7 @@
     </head>
     <body>
         <?php $this->load->view("templates/navbar.php"); ?>
+
         <div class="container-fluid contenedor">
             <div class="row">
                 <?php $this->load->view("templates/sidebar.php"); ?>
@@ -71,7 +72,12 @@
                                                 <td><?php echo($paciente["telefono"]) ?></td>
                                                 <td><?php echo($paciente["correo"]) ?></td>
                                                 <td><?php echo($paciente["fecha_nacimiento"]) ?></td>
-                                                <td></td>
+                                                <td>
+                                                    <button type="button" title="Editar Paciente"  name="editar" href="/HCElectFisiored/index.php/Pacientes/nuevo"><img width="25px" height="25px" src="img/edit.png"></button>
+                                                    <button type="button" title="Eliminar Paciente"  name="eliminar" value="Eliminar" onclick="delModal()"><img width="25px" height="25px" src="img/trashcan.png"></button>
+                                                    <button type="button" title="Asignar Fecha"  name="fecha"><img width="25px" height="25px" src="img/calender.png"></button>
+                                                    <button type="button" title="Asignar Convenio"  name="convenio"><img width="25px" height="25px" src="img/convenio.png"></button>
+                                                </td>
                                             </tr>
                                         <?php } ?>
                                     </tbody>
@@ -82,6 +88,8 @@
                 </main>
             </div>
         </div>
+                <script src="utilitarios/js/pacienteJs.js"></script>
+                <script src="utilitarios/js/js.js"></script>
         <?php
         $this->load->view("templates/resources.php");
         ?>
